@@ -1,11 +1,25 @@
 # nginx-vs-haproxy
 
-## haproxy
-
-haproxy is a great load balancer, but we should stand up an environment and test...
+## Start the Environment
 
 ```bash
-./run-haproxy.sh
+./start-env.sh
 ```
 
-Go to: <http://localhost:8080> and/or <http://localhost:8080/stats>
+## HAProxy
+
+Use <http://localhost:9001> for HAProxy proxy'ing. Can go to <http://localhost:9001/stats> for the stats page.
+
+## Nginx
+
+Use <http://localhost:9002> for the Nginx proxy'ing.
+
+## Apache Benchmark
+
+### ab test haproxy endpoint
+
+$ ab -n 100000 -c 1000 -r -d http://localhost:9001/
+
+### ab test nginx endpoint
+
+$ ab -n 100000 -c 1000 -r -d http://localhost:9002/
